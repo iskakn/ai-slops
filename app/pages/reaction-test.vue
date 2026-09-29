@@ -67,7 +67,7 @@ const bgClass = computed(() => {
 <template>
   <button
     type="button"
-    class="flex flex-col items-center justify-center gap-4 w-full min-h-[calc(100dvh-var(--ui-header-height))] cursor-pointer select-none focus-visible:outline-3 outline-primary/25"
+    class="flex flex-col flex-1 items-center justify-center gap-4 w-full cursor-pointer select-none focus-visible:outline-3 outline-primary/25"
     :class="bgClass"
     :aria-label="`${heading}. ${hint}`"
     @click="onClick"

@@ -64,24 +64,24 @@ const resultClass = computed(() => {
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center gap-8 w-full min-h-[calc(100dvh-var(--ui-header-height))] px-4 py-12">
+  <div class="flex flex-col flex-1 items-center justify-center gap-5 w-full px-4 py-6 sm:gap-8">
     <div class="text-center">
-      <h1 class="text-4xl font-semibold text-highlighted sm:text-5xl">
+      <h1 class="text-3xl font-semibold text-highlighted sm:text-5xl">
         Rock Paper Scissors
       </h1>
-      <p class="mt-2 text-lg text-muted">
+      <p class="mt-2 text-base text-muted sm:text-lg">
         One round · you vs. the machine
       </p>
     </div>
 
     <div class="flex items-center gap-6 sm:gap-12">
       <div class="flex flex-col items-center gap-2">
-        <span class="text-7xl leading-none sm:text-8xl">{{ player ? EMOJI[player] : '❔' }}</span>
+        <span class="text-6xl leading-none sm:text-8xl">{{ player ? EMOJI[player] : '❔' }}</span>
         <span class="text-sm text-muted">You</span>
       </div>
       <span class="text-2xl font-semibold text-muted">vs</span>
       <div class="flex flex-col items-center gap-2">
-        <span class="text-7xl leading-none sm:text-8xl">{{ computer ? EMOJI[computer] : '❔' }}</span>
+        <span class="text-6xl leading-none sm:text-8xl">{{ computer ? EMOJI[computer] : '❔' }}</span>
         <span class="text-sm text-muted">Machine</span>
       </div>
     </div>

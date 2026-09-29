@@ -24,53 +24,58 @@ useSeoMeta({
 
 <template>
   <UApp>
-    <UHeader>
-      <template #left>
-        <NuxtLink
-          to="/"
-          class="focus-visible:outline-3 outline-primary/25 rounded-md p-1 -ms-1"
-        >
-          <AppLogo class="w-auto h-6 shrink-0" />
-        </NuxtLink>
-      </template>
+    <div class="flex flex-col min-h-dvh">
+      <UHeader>
+        <template #left>
+          <NuxtLink
+            to="/"
+            class="focus-visible:outline-3 outline-primary/25 rounded-md p-1 -ms-1"
+          >
+            <AppLogo class="w-auto h-6 shrink-0" />
+          </NuxtLink>
+        </template>
 
-      <template #right>
-        <UColorModeButton />
+        <template #right>
+          <UColorModeButton />
 
-        <UButton
-          to="https://github.com/iskakn/ai-slops"
-          target="_blank"
-          icon="i-simple-icons-github"
-          aria-label="GitHub"
-          color="neutral"
-          variant="ghost"
-        />
-      </template>
-    </UHeader>
+          <UButton
+            to="https://github.com/iskakn/ai-slops"
+            target="_blank"
+            icon="i-simple-icons-github"
+            aria-label="GitHub"
+            color="neutral"
+            variant="ghost"
+          />
+        </template>
+      </UHeader>
 
-    <UMain>
-      <NuxtPage />
-    </UMain>
+      <UMain
+        class="flex flex-col flex-1"
+        :ui="{ base: 'min-h-0' }"
+      >
+        <NuxtPage />
+      </UMain>
 
-    <USeparator icon="i-simple-icons-nuxtdotjs" />
+      <USeparator icon="i-simple-icons-nuxtdotjs" />
 
-    <UFooter>
-      <template #left>
-        <p class="text-sm text-muted">
-          AI Slops • Built with Nuxt UI • © {{ new Date().getFullYear() }}
-        </p>
-      </template>
+      <UFooter>
+        <template #left>
+          <p class="text-sm text-muted">
+            AI Slops • Built with Nuxt UI • © {{ new Date().getFullYear() }}
+          </p>
+        </template>
 
-      <template #right>
-        <UButton
-          to="https://github.com/iskakn/ai-slops"
-          target="_blank"
-          icon="i-simple-icons-github"
-          aria-label="GitHub"
-          color="neutral"
-          variant="ghost"
-        />
-      </template>
-    </UFooter>
+        <template #right>
+          <UButton
+            to="https://github.com/iskakn/ai-slops"
+            target="_blank"
+            icon="i-simple-icons-github"
+            aria-label="GitHub"
+            color="neutral"
+            variant="ghost"
+          />
+        </template>
+      </UFooter>
+    </div>
   </UApp>
 </template>

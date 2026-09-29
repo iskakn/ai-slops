@@ -50,12 +50,12 @@ function buttonVariant(n: number) {
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center gap-8 w-full min-h-[calc(100dvh-var(--ui-header-height))] px-4 py-12">
+  <div class="flex flex-col flex-1 items-center justify-center gap-6 w-full px-4 py-6 sm:gap-8">
     <div class="text-center">
-      <h1 class="text-4xl font-semibold text-highlighted sm:text-5xl">
+      <h1 class="text-3xl font-semibold text-highlighted sm:text-5xl">
         Guess the Number
       </h1>
-      <p class="mt-2 text-lg text-muted">
+      <p class="mt-2 text-base text-muted sm:text-lg">
         0–10 · one try
       </p>
     </div>
@@ -90,11 +90,12 @@ function buttonVariant(n: number) {
     </div>
 
     <UButton
-      v-if="done"
       label="Play again"
       color="neutral"
       variant="subtle"
       size="lg"
+      :disabled="!done"
+      :class="!done && 'invisible'"
       @click="reset"
     />
   </div>
