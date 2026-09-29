@@ -1,7 +1,10 @@
 <script setup lang="ts">
-useSeoMeta({
-  title: 'Rock Paper Scissors'
-})
+import { useGame } from '~/composables/useGame'
+import { useOneShotRound } from '~/composables/useOneShotRound'
+import { randomElement } from '~/utils/random'
+import type { StatusMessage } from '~/utils/status'
+
+const game = useGame('rock-paper-scissors')
 
 const HANDS = ['rock', 'paper', 'scissors'] as const
 type Hand = (typeof HANDS)[number]
@@ -18,81 +21,45 @@ const BEATS: Record<Hand, Hand> = {
   scissors: 'paper'
 }
 
-const player = ref<Hand | null>(null)
-const computer = ref<Hand | null>(null)
+const { round, locked: done, commit, reset } = useOneShotRound<{ player: Hand, computer: Hand }>()
 
-// Drawn at click time so it never enters the SSR payload.
-// Rejection sampling keeps the 1/3 chance of each hand exact:
-// 2^32 % 3 !== 0, so values in the incomplete tail are redrawn.
-function drawHand(): Hand {
-  const buf = new Uint32Array(1)
-  const limit = Math.floor(0x100000000 / HANDS.length) * HANDS.length
-  let value = 0
-  do {
-    crypto.getRandomValues(buf)
-    value = buf[0] ?? 0
-  } while (value >= limit)
-  return HANDS[value % HANDS.length] ?? 'rock'
+function play(player: Hand) {
+  // The machine's hand is drawn inside the factory, so it is decided at click
+  // time only and never appears in the server-rendered payload.
+  commit(() => ({ player, computer: randomElement(HANDS) }))
 }
 
-function play(hand: Hand) {
-  if (player.value !== null) return
-  player.value = hand
-  computer.value = drawHand()
-}
-
-function reset() {
-  player.value = null
-  computer.value = null
-}
-
-const done = computed(() => player.value !== null)
-
-const result = computed(() => {
-  if (!player.value || !computer.value) return ''
-  if (player.value === computer.value) return 'Draw'
-  return BEATS[player.value] === computer.value ? 'You win!' : 'You lose'
-})
-
-const resultClass = computed(() => {
-  switch (result.value) {
-    case 'You win!': return 'text-green-500'
-    case 'You lose': return 'text-red-500'
-    default: return 'text-muted'
-  }
+const status = computed<StatusMessage>(() => {
+  const played = round.value
+  if (!played) return { text: 'Pick your hand', tone: 'muted' }
+  if (played.player === played.computer) return { text: 'Draw', tone: 'muted' }
+  return BEATS[played.player] === played.computer
+    ? { text: 'You win!', tone: 'positive' }
+    : { text: 'You lose', tone: 'negative' }
 })
 </script>
 
 <template>
-  <div class="flex flex-col flex-1 items-center justify-center gap-5 w-full px-4 py-6 sm:gap-8">
-    <div class="text-center">
-      <h1 class="text-3xl font-semibold text-highlighted sm:text-5xl">
-        Rock Paper Scissors
-      </h1>
-      <p class="mt-2 text-base text-muted sm:text-lg">
-        One round · you vs. the machine
-      </p>
-    </div>
-
+  <GameBoard :game="game">
     <div class="flex items-center gap-6 sm:gap-12">
       <div class="flex flex-col items-center gap-2">
-        <span class="text-6xl leading-none sm:text-8xl">{{ player ? EMOJI[player] : '❔' }}</span>
+        <span class="text-6xl leading-none sm:text-8xl">
+          {{ round ? EMOJI[round.player] : '❔' }}
+        </span>
         <span class="text-sm text-muted">You</span>
       </div>
+
       <span class="text-2xl font-semibold text-muted">vs</span>
+
       <div class="flex flex-col items-center gap-2">
-        <span class="text-6xl leading-none sm:text-8xl">{{ computer ? EMOJI[computer] : '❔' }}</span>
+        <span class="text-6xl leading-none sm:text-8xl">
+          {{ round ? EMOJI[round.computer] : '❔' }}
+        </span>
         <span class="text-sm text-muted">Machine</span>
       </div>
     </div>
 
-    <p
-      role="status"
-      class="text-2xl font-medium"
-      :class="done ? resultClass : 'text-muted'"
-    >
-      {{ done ? result : 'Pick your hand' }}
-    </p>
+    <GameStatus :status="status" />
 
     <div class="flex gap-3">
       <UButton
@@ -110,14 +77,9 @@ const resultClass = computed(() => {
       </UButton>
     </div>
 
-    <UButton
-      label="Play again"
-      color="neutral"
-      variant="subtle"
-      size="lg"
+    <PlayAgainButton
       :disabled="!done"
-      :class="!done && 'invisible'"
-      @click="reset"
+      @replay="reset"
     />
-  </div>
+  </GameBoard>
 </template>

@@ -1,9 +1,13 @@
 <script setup lang="ts">
-useSeoMeta({
-  title: 'Reaction Test'
-})
+import { useGame } from '~/composables/useGame'
+import { randomIndex } from '~/utils/random'
+
+useGame('reaction-test')
 
 type Phase = 'idle' | 'waiting' | 'ready' | 'result' | 'too-soon'
+
+const MIN_DELAY = 1000
+const DELAY_SPREAD = 3000
 
 const phase = ref<Phase>('idle')
 const time = ref(0)
@@ -11,16 +15,21 @@ const time = ref(0)
 let timeout: ReturnType<typeof setTimeout> | undefined
 let startedAt = 0
 
+function startWaiting() {
+  clearTimeout(timeout)
+  phase.value = 'waiting'
+  timeout = setTimeout(() => {
+    startedAt = performance.now()
+    phase.value = 'ready'
+  }, MIN_DELAY + randomIndex(DELAY_SPREAD))
+}
+
 function onClick() {
   switch (phase.value) {
     case 'idle':
     case 'result':
     case 'too-soon':
-      phase.value = 'waiting'
-      timeout = setTimeout(() => {
-        startedAt = performance.now()
-        phase.value = 'ready'
-      }, 1000 + Math.random() * 3000)
+      startWaiting()
       break
     case 'waiting':
       clearTimeout(timeout)
@@ -54,6 +63,8 @@ const hint = computed(() => {
   }
 })
 
+const announcement = computed(() => hint.value ? `${heading.value}. ${hint.value}` : heading.value)
+
 const bgClass = computed(() => {
   switch (phase.value) {
     case 'waiting':
@@ -65,21 +76,32 @@ const bgClass = computed(() => {
 </script>
 
 <template>
-  <button
-    type="button"
-    class="flex flex-col flex-1 items-center justify-center gap-4 w-full cursor-pointer select-none focus-visible:outline-3 outline-primary/25"
-    :class="bgClass"
-    :aria-label="`${heading}. ${hint}`"
-    @click="onClick"
-  >
-    <span class="text-6xl font-semibold tabular-nums sm:text-8xl">
-      {{ heading }}
-    </span>
-    <span
-      v-if="hint"
-      class="text-lg opacity-70"
+  <div class="flex flex-col flex-1 w-full">
+    <GameStage
+      :label="announcement"
+      :class="bgClass"
+      @click="onClick"
     >
-      {{ hint }}
-    </span>
-  </button>
+      <span class="text-6xl font-semibold tabular-nums sm:text-8xl">
+        {{ heading }}
+      </span>
+      <span
+        v-if="hint"
+        class="text-lg opacity-70"
+      >
+        {{ hint }}
+      </span>
+    </GameStage>
+
+    <!-- The green transition happens without any user action, and a button's
+         subtree is presentational once aria-label is set, so the state change
+         is announced from a live region outside the button instead. -->
+    <p
+      role="status"
+      aria-live="polite"
+      class="sr-only"
+    >
+      {{ announcement }}
+    </p>
+  </div>
 </template>
