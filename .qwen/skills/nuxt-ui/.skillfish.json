@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "nuxt-ui",
+  "owner": "nuxt",
+  "repo": "ui",
+  "path": "skills/nuxt-ui",
+  "branch": "v4",
+  "sha": "e6183761cd43f40098d4151a7189ccd3c86bc384",
+  "source": "manual"
+}
