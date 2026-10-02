@@ -24,7 +24,7 @@ export const GAMES = [
   {
     slug: 'reaction-test',
     title: 'Reaction Test',
-    description: 'Wait for green, then tap fast.',
+    description: 'Wait for green, then release fast.',
     icon: 'i-lucide-zap'
   },
   {
