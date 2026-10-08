@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "git-commit",
+  "owner": "github",
+  "repo": "awesome-copilot",
+  "path": "skills/git-commit",
+  "branch": "main",
+  "sha": "883a6a7466f55a9cd9f22cf1cce2d9333fc9b998",
+  "source": "manual"
+}
