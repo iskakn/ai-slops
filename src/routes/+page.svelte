@@ -6,26 +6,48 @@
 	<header class="hero-header">
 		<div class="logo-badge">⚡ AI-SLOPS ARCADE</div>
 		<h1 class="main-title">Reflex & Speed Lab</h1>
-		<p class="tagline">Minimalist, lightning-fast micro-experiments and games.</p>
+		<p class="tagline">Lightning-fast reflex benchmarks and precision training challenges.</p>
 	</header>
 
 	<main class="grid-container">
-		<a href="/reaction-time" class="game-card featured">
-			<div class="badge-featured">Featured Challenge</div>
-			<div class="card-icon">⚡</div>
+		<!-- Aim Trainer Card -->
+		<a href="/aim-trainer" class="game-card aim-trainer-card">
+			<div class="badge-featured badge-red">New Mode</div>
+			<div class="card-icon red-glow">🎯</div>
+			<h2 class="card-title">Aim Trainer</h2>
+			<p class="card-desc">
+				Target speed & accuracy training. Rapidly hit <strong>30 random targets</strong> across the arena. Keep combos alive for high streaks!
+			</p>
+
+			<div class="specs-row">
+				<span class="spec-tag">30 Targets</span>
+				<span class="spec-tag">Streak Multiplier</span>
+				<span class="spec-tag">Target Sizing</span>
+			</div>
+
+			<div class="play-btn-cta cta-red">
+				<span>Play Aim Trainer</span>
+				<span class="arrow">→</span>
+			</div>
+		</a>
+
+		<!-- Reaction Time Card -->
+		<a href="/reaction-time" class="game-card reaction-card">
+			<div class="badge-featured badge-amber">Classic</div>
+			<div class="card-icon yellow-glow">⚡</div>
 			<h2 class="card-title">Reaction Time</h2>
 			<p class="card-desc">
-				Hold down on the screen and release the moment it flashes green. Can you maintain razor-sharp reflexes <strong>5 times in a row</strong>?
+				Hold down on the screen and release the instant it flashes green. Can you maintain razor-sharp reflexes <strong>5 times in a row</strong>?
 			</p>
 
 			<div class="specs-row">
 				<span class="spec-tag">5 Consecutive Holds</span>
-				<span class="spec-tag">Audio + Haptics</span>
+				<span class="spec-tag">False-Start Check</span>
 				<span class="spec-tag">Reflex Tier Rank</span>
 			</div>
 
-			<div class="play-btn-cta">
-				<span>Play Challenge</span>
+			<div class="play-btn-cta cta-blue">
+				<span>Play Reaction Time</span>
 				<span class="arrow">→</span>
 			</div>
 		</a>
@@ -43,9 +65,9 @@
 	}
 
 	.home-container {
-		max-width: 900px;
+		max-width: 960px;
 		margin: 0 auto;
-		padding: 4rem 1.5rem;
+		padding: 3.5rem 1.5rem;
 		box-sizing: border-box;
 		display: flex;
 		flex-direction: column;
@@ -54,7 +76,7 @@
 
 	.hero-header {
 		text-align: center;
-		margin-bottom: 3.5rem;
+		margin-bottom: 3rem;
 	}
 
 	.logo-badge {
@@ -82,21 +104,24 @@
 	}
 
 	.tagline {
-		font-size: 1.2rem;
+		font-size: 1.15rem;
 		color: #94a3b8;
 		margin: 0;
-		max-width: 520px;
+		max-width: 580px;
 	}
 
 	.grid-container {
 		width: 100%;
-		max-width: 560px;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		gap: 1.5rem;
 	}
 
 	.game-card {
 		position: relative;
 		display: flex;
 		flex-direction: column;
+		justify-content: space-between;
 		background: rgba(15, 23, 42, 0.7);
 		backdrop-filter: blur(16px);
 		-webkit-backdrop-filter: blur(16px);
@@ -112,6 +137,15 @@
 
 	.game-card:hover {
 		transform: translateY(-4px);
+		border-color: rgba(255, 255, 255, 0.25);
+	}
+
+	.aim-trainer-card:hover {
+		border-color: rgba(244, 63, 94, 0.5);
+		box-shadow: 0 25px 50px -10px rgba(244, 63, 94, 0.25);
+	}
+
+	.reaction-card:hover {
 		border-color: rgba(59, 130, 246, 0.5);
 		box-shadow: 0 25px 50px -10px rgba(59, 130, 246, 0.25);
 	}
@@ -120,9 +154,8 @@
 		position: absolute;
 		top: 1.5rem;
 		right: 1.5rem;
-		background: linear-gradient(135deg, #f59e0b, #d97706);
 		color: #ffffff;
-		font-size: 0.75rem;
+		font-size: 0.72rem;
 		font-weight: 700;
 		padding: 0.3rem 0.75rem;
 		border-radius: 9999px;
@@ -130,9 +163,24 @@
 		letter-spacing: 0.05em;
 	}
 
+	.badge-red {
+		background: linear-gradient(135deg, #ef4444, #be123c);
+	}
+
+	.badge-amber {
+		background: linear-gradient(135deg, #f59e0b, #d97706);
+	}
+
 	.card-icon {
 		font-size: 3.2rem;
 		margin-bottom: 0.8rem;
+	}
+
+	.red-glow {
+		filter: drop-shadow(0 0 16px rgba(239, 68, 68, 0.6));
+	}
+
+	.yellow-glow {
 		filter: drop-shadow(0 0 16px rgba(234, 179, 8, 0.6));
 	}
 
@@ -144,7 +192,7 @@
 	}
 
 	.card-desc {
-		font-size: 1rem;
+		font-size: 0.98rem;
 		line-height: 1.6;
 		color: #94a3b8;
 		margin: 0 0 1.5rem;
@@ -161,7 +209,7 @@
 		background: rgba(255, 255, 255, 0.06);
 		border: 1px solid rgba(255, 255, 255, 0.08);
 		color: #cbd5e1;
-		font-size: 0.8rem;
+		font-size: 0.78rem;
 		padding: 0.35rem 0.7rem;
 		border-radius: 0.5rem;
 		font-weight: 500;
@@ -171,18 +219,26 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		background: linear-gradient(135deg, #2563eb, #4f46e5);
 		color: #ffffff;
 		padding: 1rem 1.4rem;
 		border-radius: 1rem;
 		font-weight: 700;
 		font-size: 1.05rem;
+		transition: filter 0.2s ease;
+	}
+
+	.cta-red {
+		background: linear-gradient(135deg, #ef4444, #dc2626);
+		box-shadow: 0 10px 20px -5px rgba(239, 68, 68, 0.5);
+	}
+
+	.cta-blue {
+		background: linear-gradient(135deg, #2563eb, #4f46e5);
 		box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.5);
-		transition: background 0.2s ease;
 	}
 
 	.game-card:hover .play-btn-cta {
-		background: linear-gradient(135deg, #1d4ed8, #4338ca);
+		filter: brightness(1.15);
 	}
 
 	.arrow {
