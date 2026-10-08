@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "svelte-code-writer",
+  "owner": "sveltejs",
+  "repo": "ai-tools",
+  "path": "packages/opencode/skills/svelte-code-writer",
+  "branch": "main",
+  "sha": "177e9694aa97200de84999b8ab46b7b8db43c5cb",
+  "source": "manual"
+}

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "svelte-core-bestpractices",
+  "owner": "sveltejs",
+  "repo": "ai-tools",
+  "path": "packages/opencode/skills/svelte-core-bestpractices",
+  "branch": "main",
+  "sha": "ecbffdeeb87ec9ac53853d5bd4c30d1af0cc5c6a",
+  "source": "manual"
+}
