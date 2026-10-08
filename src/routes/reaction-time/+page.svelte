@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import {
 		playHoldStart,
 		playReleaseCue,
@@ -242,7 +243,7 @@
 >
 	<!-- Top Navigation / Toolbar -->
 	<header class="top-nav">
-		<a href="/" class="nav-btn" title="Back to Home">
+		<a href={resolve('/')} class="nav-btn" title="Back to Home">
 			← Home
 		</a>
 

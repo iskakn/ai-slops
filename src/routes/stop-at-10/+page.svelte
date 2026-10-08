@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onDestroy } from 'svelte';
+	import { resolve } from '$app/paths';
 	import {
 		playTick,
 		playStopBell,
@@ -202,7 +203,7 @@
 <div class="page-container">
 	<!-- Top Navigation -->
 	<header class="top-nav">
-		<a href="/" class="nav-btn" title="Back to Home">
+		<a href={resolve('/')} class="nav-btn" title="Back to Home">
 			← Home
 		</a>
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	// Hub home page
+	import { resolve } from '$app/paths';
 </script>
 
 <div class="home-container">
@@ -11,7 +11,7 @@
 
 	<main class="grid-container">
 		<!-- Click Speed Sprint Card -->
-		<a href="/click-sprint" class="game-card sprint-card">
+		<a href={resolve('/click-sprint')} class="game-card sprint-card">
 			<div class="badge-featured badge-rose">New Mode</div>
 			<div class="card-icon rose-glow">⚡</div>
 			<h2 class="card-title">Click Speed Sprint</h2>
@@ -32,7 +32,7 @@
 		</a>
 
 		<!-- Stop at 10.000s Card -->
-		<a href="/stop-at-10" class="game-card stop-10-card">
+		<a href={resolve('/stop-at-10')} class="game-card stop-10-card">
 			<div class="badge-featured badge-emerald">Rhythm</div>
 			<div class="card-icon emerald-glow">⏱️</div>
 			<h2 class="card-title">Stop at 10.000s</h2>
@@ -53,7 +53,7 @@
 		</a>
 
 		<!-- Aim Trainer Card -->
-		<a href="/aim-trainer" class="game-card aim-trainer-card">
+		<a href={resolve('/aim-trainer')} class="game-card aim-trainer-card">
 			<div class="badge-featured badge-red">Precision</div>
 			<div class="card-icon red-glow">🎯</div>
 			<h2 class="card-title">Aim Trainer</h2>
@@ -74,7 +74,7 @@
 		</a>
 
 		<!-- Guess The Number Card -->
-		<a href="/guess-the-number" class="game-card guess-card">
+		<a href={resolve('/guess-the-number')} class="game-card guess-card">
 			<div class="badge-featured badge-purple">Mind Mode</div>
 			<div class="card-icon purple-glow">🔮</div>
 			<h2 class="card-title">Guess the Number</h2>
@@ -96,7 +96,7 @@
 		</a>
 
 		<!-- Reaction Time Card -->
-		<a href="/reaction-time" class="game-card reaction-card">
+		<a href={resolve('/reaction-time')} class="game-card reaction-card">
 			<div class="badge-featured badge-amber">Classic</div>
 			<div class="card-icon yellow-glow">⚡</div>
 			<h2 class="card-title">Reaction Time</h2>
