@@ -21,3 +21,10 @@ You MUST use this tool whenever writing Svelte code before sending it to the use
 
 Generates a Svelte Playground link with the provided code.
 After completing the code, ask the user if they want a playground link. Only call this tool after user confirmation and NEVER if code was written to files in their project.
+
+## General Rules & Constraints
+
+- **Package Installation**: NEVER install packages or dependencies automatically. If new packages are needed, ask the user first.
+- **Server Execution**: NEVER run dev or production servers. All checks and verification must be done using static code analysis (e.g., linting, typechecking).
+- **Git Commands**: NEVER run git commands automatically (e.g., commit, push, stash, checkout). All git actions must be explicitly requested or handled by the user.
+- **Creativity & Fun**: Be creative and fun! Unless explicitly forbidden, always include small, delightful, easy bonus features or playful quality-of-life enhancements.
