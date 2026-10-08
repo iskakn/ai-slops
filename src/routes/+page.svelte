@@ -5,14 +5,35 @@
 <div class="home-container">
 	<header class="hero-header">
 		<div class="logo-badge">⚡ AI-SLOPS ARCADE</div>
-		<h1 class="main-title">Reflex & Mind Lab</h1>
-		<p class="tagline">Lightning-fast benchmarks, rhythm timing, and intuition challenges.</p>
+		<h1 class="main-title">Reflex & Speed Lab</h1>
+		<p class="tagline">Lightning-fast benchmarks, clicking sprints, rhythm timing, and intuition tests.</p>
 	</header>
 
 	<main class="grid-container">
+		<!-- Click Speed Sprint Card -->
+		<a href="/click-sprint" class="game-card sprint-card">
+			<div class="badge-featured badge-rose">New Mode</div>
+			<div class="card-icon rose-glow">⚡</div>
+			<h2 class="card-title">Click Speed Sprint</h2>
+			<p class="card-desc">
+				All-out 10-second clicking frenzy. Tap as fast as humanly possible to test your maximum <strong>CPS (Clicks Per Second)</strong>!
+			</p>
+
+			<div class="specs-row">
+				<span class="spec-tag">10-Second Sprint</span>
+				<span class="spec-tag">Live CPS Meter</span>
+				<span class="spec-tag">Speed Tier Rank</span>
+			</div>
+
+			<div class="play-btn-cta cta-rose">
+				<span>Play Click Sprint</span>
+				<span class="arrow">→</span>
+			</div>
+		</a>
+
 		<!-- Stop at 10.000s Card -->
 		<a href="/stop-at-10" class="game-card stop-10-card">
-			<div class="badge-featured badge-emerald">New Mode</div>
+			<div class="badge-featured badge-emerald">Rhythm</div>
 			<div class="card-icon emerald-glow">⏱️</div>
 			<h2 class="card-title">Stop at 10.000s</h2>
 			<p class="card-desc">
@@ -27,6 +48,27 @@
 
 			<div class="play-btn-cta cta-emerald">
 				<span>Play Stop at 10s</span>
+				<span class="arrow">→</span>
+			</div>
+		</a>
+
+		<!-- Aim Trainer Card -->
+		<a href="/aim-trainer" class="game-card aim-trainer-card">
+			<div class="badge-featured badge-red">Precision</div>
+			<div class="card-icon red-glow">🎯</div>
+			<h2 class="card-title">Aim Trainer</h2>
+			<p class="card-desc">
+				Target speed & accuracy training. Rapidly hit <strong>30 random targets</strong> across the arena. Keep combos alive for high streaks!
+			</p>
+
+			<div class="specs-row">
+				<span class="spec-tag">30 Targets</span>
+				<span class="spec-tag">Streak Multiplier</span>
+				<span class="spec-tag">Target Sizing</span>
+			</div>
+
+			<div class="play-btn-cta cta-red">
+				<span>Play Aim Trainer</span>
 				<span class="arrow">→</span>
 			</div>
 		</a>
@@ -49,27 +91,6 @@
 
 			<div class="play-btn-cta cta-purple">
 				<span>Play Guess The Number</span>
-				<span class="arrow">→</span>
-			</div>
-		</a>
-
-		<!-- Aim Trainer Card -->
-		<a href="/aim-trainer" class="game-card aim-trainer-card">
-			<div class="badge-featured badge-red">Challenge</div>
-			<div class="card-icon red-glow">🎯</div>
-			<h2 class="card-title">Aim Trainer</h2>
-			<p class="card-desc">
-				Target speed & accuracy training. Rapidly hit <strong>30 random targets</strong> across the arena. Keep combos alive for high streaks!
-			</p>
-
-			<div class="specs-row">
-				<span class="spec-tag">30 Targets</span>
-				<span class="spec-tag">Streak Multiplier</span>
-				<span class="spec-tag">Target Sizing</span>
-			</div>
-
-			<div class="play-btn-cta cta-red">
-				<span>Play Aim Trainer</span>
 				<span class="arrow">→</span>
 			</div>
 		</a>
@@ -150,7 +171,7 @@
 		font-size: 1.15rem;
 		color: #94a3b8;
 		margin: 0;
-		max-width: 580px;
+		max-width: 620px;
 	}
 
 	.grid-container {
@@ -183,6 +204,11 @@
 		border-color: rgba(255, 255, 255, 0.25);
 	}
 
+	.sprint-card:hover {
+		border-color: rgba(244, 63, 94, 0.5);
+		box-shadow: 0 25px 50px -10px rgba(244, 63, 94, 0.25);
+	}
+
 	.stop-10-card:hover {
 		border-color: rgba(16, 185, 129, 0.5);
 		box-shadow: 0 25px 50px -10px rgba(16, 185, 129, 0.25);
@@ -194,8 +220,8 @@
 	}
 
 	.aim-trainer-card:hover {
-		border-color: rgba(244, 63, 94, 0.5);
-		box-shadow: 0 25px 50px -10px rgba(244, 63, 94, 0.25);
+		border-color: rgba(239, 68, 68, 0.5);
+		box-shadow: 0 25px 50px -10px rgba(239, 68, 68, 0.25);
 	}
 
 	.reaction-card:hover {
@@ -214,6 +240,10 @@
 		border-radius: 9999px;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
+	}
+
+	.badge-rose {
+		background: linear-gradient(135deg, #f43f5e, #e11d48);
 	}
 
 	.badge-emerald {
@@ -235,6 +265,10 @@
 	.card-icon {
 		font-size: 3.2rem;
 		margin-bottom: 0.8rem;
+	}
+
+	.rose-glow {
+		filter: drop-shadow(0 0 16px rgba(244, 63, 94, 0.6));
 	}
 
 	.emerald-glow {
@@ -294,6 +328,11 @@
 		font-weight: 700;
 		font-size: 1.05rem;
 		transition: filter 0.2s ease;
+	}
+
+	.cta-rose {
+		background: linear-gradient(135deg, #f43f5e, #e11d48);
+		box-shadow: 0 10px 20px -5px rgba(244, 63, 94, 0.5);
 	}
 
 	.cta-emerald {

@@ -305,3 +305,46 @@ export function playStopBell(deltaMs: number): void {
 	}
 }
 
+export function playSprintClick(cps = 5): void {
+	if (soundMuted) return;
+	const ctx = getContext();
+	if (!ctx) return;
+	try {
+		const osc = ctx.createOscillator();
+		const gain = ctx.createGain();
+		const pitch = Math.min(1500, 600 + Math.min(cps, 15) * 45);
+		osc.type = 'triangle';
+		osc.frequency.setValueAtTime(pitch, ctx.currentTime);
+		gain.gain.setValueAtTime(0.08, ctx.currentTime);
+		gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.04);
+		osc.connect(gain);
+		gain.connect(ctx.destination);
+		osc.start();
+		osc.stop(ctx.currentTime + 0.04);
+	} catch {
+		// Audio error safely ignored
+	}
+}
+
+export function playSprintEnd(): void {
+	if (soundMuted) return;
+	const ctx = getContext();
+	if (!ctx) return;
+	try {
+		const osc = ctx.createOscillator();
+		const gain = ctx.createGain();
+		osc.type = 'sawtooth';
+		osc.frequency.setValueAtTime(520, ctx.currentTime);
+		osc.frequency.linearRampToValueAtTime(320, ctx.currentTime + 0.35);
+		gain.gain.setValueAtTime(0.2, ctx.currentTime);
+		gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+		osc.connect(gain);
+		gain.connect(ctx.destination);
+		osc.start();
+		osc.stop(ctx.currentTime + 0.35);
+	} catch {
+		// Audio error safely ignored
+	}
+}
+
+
