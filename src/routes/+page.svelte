@@ -6,13 +6,34 @@
 	<header class="hero-header">
 		<div class="logo-badge">⚡ AI-SLOPS ARCADE</div>
 		<h1 class="main-title">Reflex & Mind Lab</h1>
-		<p class="tagline">Lightning-fast benchmarks, speed trainers, and intuition tests.</p>
+		<p class="tagline">Lightning-fast benchmarks, rhythm timing, and intuition challenges.</p>
 	</header>
 
 	<main class="grid-container">
+		<!-- Stop at 10.000s Card -->
+		<a href="/stop-at-10" class="game-card stop-10-card">
+			<div class="badge-featured badge-emerald">New Mode</div>
+			<div class="card-icon emerald-glow">⏱️</div>
+			<h2 class="card-title">Stop at 10.000s</h2>
+			<p class="card-desc">
+				Nail the internal clock. The display vanishes at 5 seconds in Blindfold mode—can you stop on <strong>exactly 10.000s</strong>?
+			</p>
+
+			<div class="specs-row">
+				<span class="spec-tag">10.000s Target</span>
+				<span class="spec-tag">Blindfold Mode</span>
+				<span class="spec-tag">Atomic Clock Rank</span>
+			</div>
+
+			<div class="play-btn-cta cta-emerald">
+				<span>Play Stop at 10s</span>
+				<span class="arrow">→</span>
+			</div>
+		</a>
+
 		<!-- Guess The Number Card -->
 		<a href="/guess-the-number" class="game-card guess-card">
-			<div class="badge-featured badge-purple">New Mode</div>
+			<div class="badge-featured badge-purple">Mind Mode</div>
 			<div class="card-icon purple-glow">🔮</div>
 			<h2 class="card-title">Guess the Number</h2>
 			<p class="card-desc">
@@ -162,6 +183,11 @@
 		border-color: rgba(255, 255, 255, 0.25);
 	}
 
+	.stop-10-card:hover {
+		border-color: rgba(16, 185, 129, 0.5);
+		box-shadow: 0 25px 50px -10px rgba(16, 185, 129, 0.25);
+	}
+
 	.guess-card:hover {
 		border-color: rgba(168, 85, 247, 0.5);
 		box-shadow: 0 25px 50px -10px rgba(168, 85, 247, 0.25);
@@ -190,6 +216,10 @@
 		letter-spacing: 0.05em;
 	}
 
+	.badge-emerald {
+		background: linear-gradient(135deg, #10b981, #059669);
+	}
+
 	.badge-purple {
 		background: linear-gradient(135deg, #a855f7, #7c3aed);
 	}
@@ -205,6 +235,10 @@
 	.card-icon {
 		font-size: 3.2rem;
 		margin-bottom: 0.8rem;
+	}
+
+	.emerald-glow {
+		filter: drop-shadow(0 0 16px rgba(16, 185, 129, 0.6));
 	}
 
 	.purple-glow {
@@ -260,6 +294,11 @@
 		font-weight: 700;
 		font-size: 1.05rem;
 		transition: filter 0.2s ease;
+	}
+
+	.cta-emerald {
+		background: linear-gradient(135deg, #10b981, #059669);
+		box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.5);
 	}
 
 	.cta-purple {
