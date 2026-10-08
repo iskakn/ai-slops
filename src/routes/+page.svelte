@@ -5,14 +5,36 @@
 <div class="home-container">
 	<header class="hero-header">
 		<div class="logo-badge">⚡ AI-SLOPS ARCADE</div>
-		<h1 class="main-title">Reflex & Speed Lab</h1>
-		<p class="tagline">Lightning-fast reflex benchmarks and precision training challenges.</p>
+		<h1 class="main-title">Reflex & Mind Lab</h1>
+		<p class="tagline">Lightning-fast benchmarks, speed trainers, and intuition tests.</p>
 	</header>
 
 	<main class="grid-container">
+		<!-- Guess The Number Card -->
+		<a href="/guess-the-number" class="game-card guess-card">
+			<div class="badge-featured badge-purple">New Mode</div>
+			<div class="card-icon purple-glow">🔮</div>
+			<h2 class="card-title">Guess the Number</h2>
+			<p class="card-desc">
+				Test your intuition across <strong>5 cycles</strong>. Numbers from 0 to 4, infinite tries, and zero hints. Can you channel pure ESP?
+			</p>
+
+			<div class="specs-row">
+				<span class="spec-tag">0 to 4 Range</span>
+				<span class="spec-tag">5 Cycles</span>
+				<span class="spec-tag">No Hints</span>
+				<span class="spec-tag">ESP Rating</span>
+			</div>
+
+			<div class="play-btn-cta cta-purple">
+				<span>Play Guess The Number</span>
+				<span class="arrow">→</span>
+			</div>
+		</a>
+
 		<!-- Aim Trainer Card -->
 		<a href="/aim-trainer" class="game-card aim-trainer-card">
-			<div class="badge-featured badge-red">New Mode</div>
+			<div class="badge-featured badge-red">Challenge</div>
 			<div class="card-icon red-glow">🎯</div>
 			<h2 class="card-title">Aim Trainer</h2>
 			<p class="card-desc">
@@ -65,7 +87,7 @@
 	}
 
 	.home-container {
-		max-width: 960px;
+		max-width: 1100px;
 		margin: 0 auto;
 		padding: 3.5rem 1.5rem;
 		box-sizing: border-box;
@@ -113,7 +135,7 @@
 	.grid-container {
 		width: 100%;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
 		gap: 1.5rem;
 	}
 
@@ -140,6 +162,11 @@
 		border-color: rgba(255, 255, 255, 0.25);
 	}
 
+	.guess-card:hover {
+		border-color: rgba(168, 85, 247, 0.5);
+		box-shadow: 0 25px 50px -10px rgba(168, 85, 247, 0.25);
+	}
+
 	.aim-trainer-card:hover {
 		border-color: rgba(244, 63, 94, 0.5);
 		box-shadow: 0 25px 50px -10px rgba(244, 63, 94, 0.25);
@@ -163,6 +190,10 @@
 		letter-spacing: 0.05em;
 	}
 
+	.badge-purple {
+		background: linear-gradient(135deg, #a855f7, #7c3aed);
+	}
+
 	.badge-red {
 		background: linear-gradient(135deg, #ef4444, #be123c);
 	}
@@ -174,6 +205,10 @@
 	.card-icon {
 		font-size: 3.2rem;
 		margin-bottom: 0.8rem;
+	}
+
+	.purple-glow {
+		filter: drop-shadow(0 0 16px rgba(168, 85, 247, 0.6));
 	}
 
 	.red-glow {
@@ -225,6 +260,11 @@
 		font-weight: 700;
 		font-size: 1.05rem;
 		transition: filter 0.2s ease;
+	}
+
+	.cta-purple {
+		background: linear-gradient(135deg, #a855f7, #7c3aed);
+		box-shadow: 0 10px 20px -5px rgba(168, 85, 247, 0.5);
 	}
 
 	.cta-red {

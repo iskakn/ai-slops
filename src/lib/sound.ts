@@ -189,3 +189,48 @@ export function playMiss(): void {
 		// Audio error safely ignored
 	}
 }
+
+export function playGuessWrong(): void {
+	if (soundMuted) return;
+	const ctx = getContext();
+	if (!ctx) return;
+	try {
+		const osc = ctx.createOscillator();
+		const gain = ctx.createGain();
+		osc.type = 'sawtooth';
+		osc.frequency.setValueAtTime(220, ctx.currentTime);
+		osc.frequency.linearRampToValueAtTime(160, ctx.currentTime + 0.12);
+		gain.gain.setValueAtTime(0.12, ctx.currentTime);
+		gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.14);
+		osc.connect(gain);
+		gain.connect(ctx.destination);
+		osc.start();
+		osc.stop(ctx.currentTime + 0.14);
+	} catch {
+		// Audio error safely ignored
+	}
+}
+
+export function playGuessCorrect(tries = 1): void {
+	if (soundMuted) return;
+	const ctx = getContext();
+	if (!ctx) return;
+	try {
+		const freqs = tries === 1 ? [523.25, 659.25, 783.99, 1046.5, 1318.5] : [523.25, 659.25, 783.99];
+		freqs.forEach((freq, idx) => {
+			const osc = ctx.createOscillator();
+			const gain = ctx.createGain();
+			const t = ctx.currentTime + idx * 0.06;
+			osc.type = 'triangle';
+			osc.frequency.setValueAtTime(freq, t);
+			gain.gain.setValueAtTime(0.14, t);
+			gain.gain.exponentialRampToValueAtTime(0.001, t + 0.22);
+			osc.connect(gain);
+			gain.connect(ctx.destination);
+			osc.start(t);
+			osc.stop(t + 0.22);
+		});
+	} catch {
+		// Audio error safely ignored
+	}
+}
